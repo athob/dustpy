@@ -1,3 +1,5 @@
 [submodule "dusty"]
 	path = dusty
 	url = git@github.com:ivezic/dusty.git
+	update = merge
+	branch = master
