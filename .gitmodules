@@ -1,5 +1,5 @@
-[submodule "dusty"]
-	path = dusty
+[submodule "src/dustpy/data/dusty"]
+	path = src/dustpy/data/dusty
 	url = git@github.com:ivezic/dusty.git
 	update = merge
 	branch = master
