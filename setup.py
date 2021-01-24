@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+
 try:
     from setuptools import setup
 except ImportError:
@@ -7,11 +8,12 @@ except ImportError:
 
 
 def copy_dir():
-     dir_path = 'data'
-     base_dir = os.path.join('./src/dustpy', dir_path)
-     for (dirpath, dirnames, files) in os.walk(base_dir):  # TODO: in dusty only source/, data/ and userpar.inc
-         for f in files:
-             yield os.path.join(dirpath.split('/', 3)[-1], f)
+    dir_path = 'data'
+    base_dir = os.path.join('./src/dustpy', dir_path)
+    for (dirpath, dirnames, files) in os.walk(base_dir):  # TODO: in dusty only source/, data/ and userpar.inc
+        for f in files:
+            yield os.path.join(dirpath.split('/', 3)[-1], f)
+
 
 # metadata are set in the below file, but use this here to avoid warnings.
 __author__ = __copyright__ = __credits__ = __license__ = __version__ = __maintainer__ = __email__ = __status__ = None
@@ -45,7 +47,6 @@ setup(name='dustpy',
       packages=['dustpy'],
       package_dir={'': 'src'},
       package_data={'dustpy': [f for f in copy_dir()]},
-      # package_data={'dustpy':  ['data']},
       include_package_data=True,
-      install_requires=['numpy', 'pandas', 'astropy>=4.2', 'astroquery']      # >=0.4.2']
+      install_requires=['numpy', 'pandas', 'astropy>=4.2', 'astroquery']  # >=0.4.2']
       )

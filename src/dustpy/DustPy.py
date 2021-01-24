@@ -63,7 +63,7 @@ class DustPy:
         with_full = kwargs.pop('with_full_spectrum', False)
         keep_output = kwargs.pop('keep_output_files', False)  # TODO
         with self._write_input_file(**kwargs) as input_file:
-            subprocess.run([self.dusty_path, input_file.name], cwd=self.directory_path)
+            subprocess.run([self.dusty_path, input_file.name, _P.VERBOSE], cwd=self.directory_path)
             input_file_base = os.path.splitext(input_file.name)[0]
             results, inputs = self._read_output_file(input_file_base + '.out')
             flux_spectrum = self._read_spectrum_file(input_file_base + '.stb')

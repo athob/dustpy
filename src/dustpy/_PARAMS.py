@@ -14,6 +14,7 @@ __all__ = ['DUSTY_REPO', 'V_REF_LAMBDA', 'LAMBDA_GRID_RATIO', 'LAMBDA_LABEL',
 
 # DustPy parameters
 DUSTY_REPO = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'data', 'dusty')
+VERBOSE = 0
 LAMBDA_GRID_RATIO = 1.05
 LAMBDA_LABEL = 'lambda'
 LAMBDA_UNIT = Unit('micron')
