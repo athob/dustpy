@@ -304,7 +304,11 @@ II. PHYSICAL PARAMETERS
     def _read_output_file(path):
         with open(path, 'r') as output_file:
             output = output_file.read()
-        header, results = output.split(_P.OUTPUT_RESULTS_SPLIT)
+        try:
+            header, results = output.split(_P.OUTPUT_RESULTS_SPLIT)
+        except ValueError:
+            print(output, flush = True)
+            raise ValueError("Couldn't read output file")
         inputs = re.split(r'.inp +', re.split(r'==+', header)[-1])[1]
         names, results = re.split(r'==+', results)[:2]
         names = names.split('\n')[2].split()[1:]
