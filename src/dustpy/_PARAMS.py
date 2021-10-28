@@ -8,9 +8,9 @@ from astropy.cosmology import default_cosmology
 
 __all__ = ['DUSTY_REPO', 'V_REF_LAMBDA', 'LAMBDA_GRID_RATIO', 'LAMBDA_LABEL',
            'LAMBDA_UNIT', 'LAMBDA_LIMITS', 'FLUX_TOT_LABEL', 'FLUX_INP_LABEL',
-           'FLUX_UNIT', 'OUTPUT_RESULTS_SPLIT', 'SVO_LAMBDA_KEY',
-           'SVO_TRANSMI_KEY', 'SVO_FILTER_ID', 'DEFAULT_COSMO',
-           'IN_SHELL_LABEL', 'THICKNESS_SPLIT', 'OBSERVED_TAG']
+           'FLUX_UNIT', 'OUTPUT_RESULTS_SPLIT', 'OUTPUT_RESULTS_WARN',
+           'SVO_LAMBDA_KEY', 'SVO_TRANSMI_KEY', 'SVO_FILTER_ID',
+           'DEFAULT_COSMO', 'IN_SHELL_LABEL', 'THICKNESS_SPLIT', 'OBSERVED_TAG']
 
 # DustPy parameters
 DUSTY_REPO = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'data', 'dusty')
@@ -24,6 +24,7 @@ FLUX_TOT_LABEL = 'fTot'
 FLUX_INP_LABEL = 'fInp'
 FLUX_UNIT = Unit('W/m2')
 OUTPUT_RESULTS_SPLIT = 'RESULTS:'
+OUTPUT_RESULTS_WARN = '#WARNING:'
 
 # BandData parameters
 SVO_LAMBDA_KEY = 'Wavelength'
