@@ -316,9 +316,10 @@ II. PHYSICAL PARAMETERS
         units = list(map(lambda name: Unit(re.search(r'\((.*)\)', name).group(1) if name[-1] == ')' else '1'), names))
         units[5] = Unit('arcsec')  # TODO: MEH
         names = list(map(lambda name: name.split('(')[0], names))
-        results, warning = (results + _P.OUTPUT_RESULTS_WARN).split(_P.OUTPUT_RESULTS_WARN)[:2]
+        temp = results.split('\n')
+        results, warning = (temp[0] + _P.OUTPUT_RESULTS_WARN).split(_P.OUTPUT_RESULTS_WARN)[:2]
         if warning:
-            warnings.warn("IN DUSTY OUTPUT FILE\n" + _P.OUTPUT_RESULTS_WARN + warning)
+            warnings.warn('\n'.join(["IN DUSTY OUTPUT FILE", _P.OUTPUT_RESULTS_WARN + warning]+temp[1:]))
         results = list(map(float, results.split()[1:]))
         results = QTable(list(zip(map(mul, results, units))), names=names)
         return results, inputs
