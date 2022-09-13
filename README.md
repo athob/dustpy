@@ -1,5 +1,5 @@
 # dustpy
-Python package for Dusty wrapping utilities
+Python package for [Dusty](https://github.com/ivezic/dusty) wrapping utilities
 
 ## Getting started
 
