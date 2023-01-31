@@ -2,6 +2,7 @@
 """
 Utility to load and use band data from SVO FPS
 """
+import warnings
 import numpy as np
 from astropy import table, units
 from astroquery.svo_fps import SvoFps
@@ -85,7 +86,11 @@ class BandData:
         self._transmission_data = self.num_of_bands * [table.QTable()]
         self._transmission_integral = self.num_of_bands * [0.]
         for i, filterid in enumerate(self.filterids):
-            self._transmission_data[i] = table.QTable(SvoFps.get_transmission_data(filterid))  # TODO: unit consistency
+            _temp = SvoFps.get_transmission_data(filterid)  # TODO: unit consistency
+            if isinstance(_temp[_P.SVO_TRANSMI_KEY].unit, units.core.UnrecognizedUnit):
+                warnings.warn(f"UnrecognizedUnit '{_temp[_P.SVO_TRANSMI_KEY].unit.name}' found for filter ID '{filterid}', removing it as a temporary solution")
+                _temp[_P.SVO_TRANSMI_KEY].unit = ''
+            self._transmission_data[i] = table.QTable(_temp)
             self._transmission_integral[i] = self.integrate_over_band(i)
 
     def _stacked_grid_of_key(self, key):
