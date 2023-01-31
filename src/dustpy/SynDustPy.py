@@ -64,8 +64,8 @@ class SynDustPy:
         outer_shell = inner_shell * float(inputs.split(_P.THICKNESS_SPLIT)[1].split('\n')[0])
         from_inner = (inner_shell / self.distance).si ** 2
         from_outer = (outer_shell / self.distance).si ** 2
-        spectrum[_P.FLUX_TOT_LABEL] *= self.band_data.transmissions_grid.unmasked
-        spectrum[_P.FLUX_INP_LABEL] *= self.band_data.transmissions_grid.unmasked
+        spectrum[_P.FLUX_TOT_LABEL] *= self.band_data.transmissions_grid  # .unmasked
+        spectrum[_P.FLUX_INP_LABEL] *= self.band_data.transmissions_grid  # .unmasked
         spectrum[_P.FLUX_TOT_LABEL+_P.OBSERVED_TAG] = spectrum[_P.FLUX_TOT_LABEL] * from_outer
         spectrum[_P.FLUX_INP_LABEL+_P.OBSERVED_TAG] = spectrum[_P.FLUX_INP_LABEL] * from_inner
         full_spectrum[_P.FLUX_TOT_LABEL+_P.OBSERVED_TAG] = full_spectrum[_P.FLUX_TOT_LABEL] * from_outer
