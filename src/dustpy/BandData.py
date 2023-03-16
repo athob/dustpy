@@ -94,7 +94,8 @@ class BandData:
             self._transmission_integral[i] = self.integrate_over_band(i)
 
     def _stacked_grid_of_key(self, key):
-        return units.Quantity(table.vstack(self._transmission_data)[key])
+        stack = units.Quantity(table.vstack(self._transmission_data)[key])
+        return stack.unmasked if hasattr(stack, 'unmasked') else stack
 
 
 # Press the green button in the gutter to run the script.
